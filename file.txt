@@ -1,0 +1,47 @@
+strict graph {
+
+	label="Antarctic Research Base
+We picked up a signal from a station doing ice core research in the Antarctic";
+
+	size="8";
+
+
+	"1" [ fixedsize="true", fontname="times", label="1: Drilling Station", shape="rectangle", width="2.0",  weight=0 ];
+
+	"1" [  weight=0 ];
+
+	"2" [ fixedsize="true", fontname="times", label="2: Crevasse", shape="rectangle", width="2.0",  weight=0 ];
+
+	"2" [  weight=0 ];
+
+	"2" -- "4" [  weight=0 ];
+
+	"3" [ fixedsize="true", fontname="times", label="3: Sleeping Quarters", shape="rectangle", width="2.0",  weight=0 ];
+
+	"3" [  weight=0 ];
+
+	"3" -- "6" [  weight=0 ];
+
+	"4" [ fixedsize="true", fontname="times", label="4: Lab", shape="rectangle", width="2.0",  weight=0 ];
+
+	"4" -- "2" [  weight=0 ];
+
+	"5" [ fixedsize="true", fontname="times", label="5: Motor Pool", shape="rectangle", width="2.0",  weight=0 ];
+
+	"5" [  weight=0 ];
+
+	"6" [ fixedsize="true", fontname="times", label="6: Frozen Wastes", shape="rectangle", width="2.0",  weight=0 ];
+
+	"6" -- "3" [  weight=0 ];
+
+	"0" [ fontname="times-bold", fontsize="20", label="LZ", shape="square", style="bold",  weight=0 ];
+
+	"0" -- "2" [  weight=0 ];
+
+	"0" -- "3" [  weight=0 ];
+
+	"0" -- "5" [  weight=0 ];
+
+	"0" -- "1" [  weight=0 ];
+
+}
