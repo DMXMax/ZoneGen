@@ -25,3 +25,4 @@ go.work
 !/example/*.png
 
 zonegen
+.DS_Store
