@@ -23,3 +23,5 @@ go.work
 *.png 
 
 !/example/*.png
+
+zonegen
