@@ -6,6 +6,6 @@ It creates a series of zones based on various terrains.
 
 ## Usage
 To generate a random map, run the following command:
-``` zonegen -o map.png```
+``` zonegen -p -o map.png```
 
 currently the output is only .png files
