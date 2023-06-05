@@ -21,7 +21,7 @@ var (
 		Short: "zonegen makes maps for an alien invasion game",
 		Long:  `Make maps quickly for your alien invasion`,
 		Run: func(cmd *cobra.Command, args []string) {
-			gm := zonegen.NewGameMap(rand.Intn(7))
+			gm := zonegen.NewGameMap(rand.Intn(len(zonegen.AvailablesTerrains)))
 			b := gm.DrawZones()
 
 			if makePNG {

@@ -6,7 +6,7 @@ type TerrainDescription struct {
 	MapSize     string
 }
 
-var AvailablesTerrains = [6]TerrainDescription{
+var AvailablesTerrains = []TerrainDescription{
 	{"Basic Terrain", []string{"LZ", "Alpha", "Bravo", "Charlie", "Delta", "Echo", "Foxtrot"}, "4"},
 	{"Antarctic Research Base\nWe picked up a signal from a station doing ice core research in the Antarctic",
 		[]string{
