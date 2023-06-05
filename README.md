@@ -2,4 +2,4 @@
 It creates a series of zones based on various terrains.
 ![Example Map][def]
 
-[def]: /repository/example/example1.png
+[def]: /repository/example/example1.png?raw=true "Example Map"
