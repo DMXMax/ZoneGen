@@ -20,9 +20,17 @@ var (
 	fileName         string
 
 	rootCmd = &cobra.Command{
-		Use:   "zonegen",
-		Short: "zonegen makes maps for an alien invasion game",
-		Long:  `Make maps quickly for your alien invasion`,
+		Use:   "map",
+		Short: "map makes maps for an alien invasion game",
+		Long: `Make maps quickly for your alien invasion. Most of the time you'll just type:
+					map
+			which will make a map with a random terrain and save it to output.png. 
+			Sometimes you'll want to specify a terrain so you'd type
+					map -t 1
+			which will make a map with terrain 1 and save it to output.png.
+			Sometimes you'll want to save it to somewhere than output.png so you'd type
+					map -o mymap.png
+			which would save it to mymap.png.`,
 		Run: func(cmd *cobra.Command, args []string) {
 			if viper.GetBool("dot") == false && viper.GetBool("png") == false {
 				fmt.Println("You must specify either --dot, --png or both to produce any maps. Run with --help for more information")
@@ -92,9 +100,7 @@ func init() {
 	err := viper.ReadInConfig()
 
 	if err != nil {
-		if _, ok := err.(viper.ConfigFileNotFoundError); ok {
-			fmt.Println("No config found. Using defaults.")
-		} else {
+		if _, ok := err.(viper.ConfigFileNotFoundError); !ok {
 			fmt.Printf("Something went wrong reading the config file: %v\n", err)
 			os.Exit(-1)
 		}
