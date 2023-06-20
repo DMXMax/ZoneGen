@@ -1,7 +1,7 @@
 package main
 
 import (
-	"zonegen/cmd"
+	"map/cmd"
 )
 
 func main() {

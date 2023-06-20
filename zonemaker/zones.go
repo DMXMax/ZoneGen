@@ -9,6 +9,7 @@ import (
 	"github.com/dominikbraun/graph"
 	"github.com/dominikbraun/graph/draw"
 	"github.com/rs/zerolog/log"
+	"github.com/spf13/viper"
 )
 
 type GameMap struct {
@@ -30,13 +31,13 @@ func (gm *GameMap) makeZones(zones int) *graph.Graph[int, int] {
 	g.AddVertex(0, graph.VertexAttribute("label", gm.Terrain.Areas[0]),
 		graph.VertexAttribute("shape", "rectangle"),
 		graph.VertexAttribute("style", "bold"),
-		graph.VertexAttribute("fontname", "Arial"),
+		graph.VertexAttribute("fontname", viper.GetString("fontname")),
 		graph.VertexAttribute("fontsize", "14"))
 
 	for i := 1; i < zones; i++ {
 		g.AddVertex(i,
 			graph.VertexAttribute("shape", "rectangle"),
-			graph.VertexAttribute("fontname", "Arial"),
+			graph.VertexAttribute("fontname", viper.GetString("fontname")),
 			graph.VertexAttribute("label", fmt.Sprintf("%d: %s", i, gm.Terrain.Areas[i])),
 		)
 		g.AddEdge(i, rand.Intn(i))
@@ -74,7 +75,7 @@ func (gm *GameMap) DrawZones() []byte {
 	buf := bytes.NewBuffer(make([]byte, 0, 1024))
 
 	if err := draw.DOT(*gm.gameZones, buf,
-		draw.GraphAttribute("fontname", "Ariel"),
+		draw.GraphAttribute("fontname", viper.GetString("fontname")),
 		draw.GraphAttribute("label", gm.Terrain.Description),
 		draw.GraphAttribute("labelloc", "t"),
 	); err != nil {
