@@ -32,12 +32,13 @@ func (gm *GameMap) makeZones(zones int) *graph.Graph[int, int] {
 		graph.VertexAttribute("shape", "rectangle"),
 		graph.VertexAttribute("style", "bold"),
 		graph.VertexAttribute("fontname", viper.GetString("fontname")),
-		graph.VertexAttribute("fontsize", "14"))
+		graph.VertexAttribute("fontsize", viper.GetString("fontsize")))
 
 	for i := 1; i < zones; i++ {
 		g.AddVertex(i,
 			graph.VertexAttribute("shape", "rectangle"),
 			graph.VertexAttribute("fontname", viper.GetString("fontname")),
+			graph.VertexAttribute("fontsize", viper.GetString("fontsize")),
 			graph.VertexAttribute("label", fmt.Sprintf("%d: %s", i, gm.Terrain.Areas[i])),
 		)
 		g.AddEdge(i, rand.Intn(i))
@@ -72,10 +73,12 @@ func (gm *GameMap) makeZones(zones int) *graph.Graph[int, int] {
 }
 
 func (gm *GameMap) DrawZones() []byte {
+	log.Info().Str("fontname", viper.GetString("fontname")).Msg("Drawing zones")
 	buf := bytes.NewBuffer(make([]byte, 0, 1024))
 
 	if err := draw.DOT(*gm.gameZones, buf,
-		draw.GraphAttribute("fontname", viper.GetString("fontname")),
+		draw.GraphAttribute("fontname", viper.GetString("titlefontname")),
+		draw.GraphAttribute("fontsize", viper.GetString("titlefontsize")),
 		draw.GraphAttribute("label", gm.Terrain.Description),
 		draw.GraphAttribute("labelloc", "t"),
 	); err != nil {

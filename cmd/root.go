@@ -80,7 +80,7 @@ func init() {
 	cobra.OnInitialize()
 	viper.SetConfigName("config")
 	viper.AddConfigPath(".")
-	viper.SetConfigType("yaml")
+	viper.SetConfigType("yml")
 
 	rootCmd.Flags().Int16VarP(&terrain, "terrain", "t", int16(rand.Intn(len(zonegen.AvailablesTerrains))), "Terrain to use. If not specified, a random terrain will be used")
 	rootCmd.Flags().BoolVarP(&makeDot, "dot", "d", false, "Generate DOT output to stdout")
@@ -92,10 +92,12 @@ func init() {
 	viper.SetDefault("output", "map.png")
 	viper.SetDefault("fontname", "Arial")
 	viper.SetDefault("fontsize", 12)
+	viper.SetDefault("titlefontname", "Arial")
+	viper.SetDefault("titlefontsize", 16)
 	viper.BindPFlag("dot", rootCmd.Flags().Lookup("dot"))
 	viper.BindPFlag("png", rootCmd.Flags().Lookup("png"))
 
-	zerolog.SetGlobalLevel(zerolog.FatalLevel)
+	zerolog.SetGlobalLevel(zerolog.InfoLevel)
 
 	err := viper.ReadInConfig()
 
