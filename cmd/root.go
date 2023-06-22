@@ -97,7 +97,7 @@ func init() {
 	viper.BindPFlag("dot", rootCmd.Flags().Lookup("dot"))
 	viper.BindPFlag("png", rootCmd.Flags().Lookup("png"))
 
-	zerolog.SetGlobalLevel(zerolog.InfoLevel)
+	zerolog.SetGlobalLevel(zerolog.FatalLevel)
 
 	err := viper.ReadInConfig()
 
