@@ -73,7 +73,6 @@ func (gm *GameMap) makeZones(zones int) *graph.Graph[int, int] {
 }
 
 func (gm *GameMap) DrawZones() []byte {
-	log.Info().Str("fontname", viper.GetString("fontname")).Msg("Drawing zones")
 	buf := bytes.NewBuffer(make([]byte, 0, 1024))
 
 	if err := draw.DOT(*gm.gameZones, buf,
